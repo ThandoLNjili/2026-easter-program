@@ -1,0 +1,463 @@
+/* --- FULL SCREEN COVER PAGE (PAGE 1) --- */
+.full-screen-page {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    max-width: 100% !important; /* Removes the 700px limit */
+    height: calc(100vh - 90px); /* Fills the screen height beneath the nav bar */
+    display: none; /* Controlled by JS */
+    justify-content: center;
+    align-items: center;
+}
+
+.full-screen-page.active {
+    display: flex; /* Overrides the standard block display to center the image */
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the whole poster is visible without cropping */
+}
+
+/* --- BASE STYLES (MOBILE FIRST) --- */
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
+    margin: 0;
+    padding: 10px;
+    font-family: "Times New Roman", Times, serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Navigation Controls (Mobile) */
+.nav-controls {
+    position: sticky;       /* Makes the bar float */
+    top: 10px;              /* Sets the distance from the top edge */
+    z-index: 1000;          /* Ensures it stays ON TOP of the text while scrolling */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 15px;
+    background: #ffffff;    /* Solid background so text doesn't show through */
+    padding: 8px 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Slightly stronger shadow for the floating effect */
+    border: 1px solid #ddd;
+    border-radius: 8px;     /* Rounds the corners for a modern app-like feel */
+    box-sizing: border-box;
+}
+
+.nav-btn {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #5a0000;
+}
+
+.nav-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#page-indicator {
+    font-weight: bold;
+    font-size: 12px;
+    color: #800000;
+}
+
+/* --- PAGE 1: COVER IMAGE CONTAINER --- */
+/* A special layout for the cover that removes normal text alignment */
+.cover-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* On mobile, this will let the whole poster scroll vertically as a natural page */
+    padding: 0; 
+}
+
+/* The style for the poster image itself */
+.cover-poster {
+    width: 100%;         /* Fits the gold border width on mobile */
+    height: auto;        /* Preserves the aspect ratio */
+    display: block;      /* Avoids ghost spacing at the bottom */
+    object-fit: contain; /* Ensures the image is not cropped on bizarre screens */
+}
+
+/* Redesigned formatting carried forward to later pages:
+   We are now using Flexbox instead of tables for the lists below. */
+/* ... existing rules from previous interaction ... */
+
+/* Page Container */
+.program-page {
+    display: none;
+    /* Hidden by default */
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 700px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #800000;
+    box-sizing: border-box;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.program-page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inner-border {
+    border: 1px solid #d4af37;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cover Page Elements */
+h1 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    color: #222;
+}
+
+.subheading {
+    font-size: 12px;
+    margin: 3px 0;
+    color: #444;
+}
+
+.hosts {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.logo-placeholder {
+    margin: 15px 0;
+    width: 80px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #888;
+}
+
+.logo-placeholder img {
+    max-width: 140%;
+    height: auto;
+}
+
+.holy-week-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 5px;
+    width: 90%;
+}
+
+.dates-table {
+    width: 90%;
+    margin: 0 auto 15px auto;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.dates-table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.dates-table td:first-child {
+    font-weight: bold;
+    text-align: left;
+    width: 45%;
+}
+
+.dates-table td:last-child {
+    text-align: right;
+}
+
+.leadership {
+    font-size: 11px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.leadership p {
+    margin: 3px 0;
+}
+
+.leadership .name {
+    font-weight: bold;
+}
+
+/* --- Inner Pages (Order of Worship) - REDESIGNED --- */
+.page-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #800000;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.worship-leader {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #444;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px 0 10px 0;
+    color: #800000;
+    border-bottom: 2px solid #d4af37;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 4px;
+}
+
+/* New Flexbox Layout for the lists */
+.worship-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.worship-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 8px 0;
+    border-bottom: 1px dashed #dccd9b;
+    /* Elegant dashed line instead of dots */
+    gap: 15px;
+    /* Ensures space between left and right text */
+}
+
+.worship-action {
+    font-weight: bold;
+    font-size: 12px;
+    color: #222;
+    flex: 1;
+}
+
+.worship-person {
+    font-size: 12px;
+    color: #444;
+    text-align: right;
+    flex: 1.2;
+    line-height: 1.3;
+}
+
+.worship-person .sub-text {
+    display: block;
+    font-size: 10px;
+    font-style: italic;
+    color: #777;
+    margin-top: 2px;
+}
+
+.trial-list {
+    font-size: 12px;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.trial-list li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #444;
+}
+
+.trial-list li strong {
+    color: #222;
+}
+
+.page-number {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 15px;
+    color: #888;
+    width: 100%;
+}
+
+/* --- DESKTOP SCALING --- */
+@media (min-width: 600px) {
+    body {
+        padding: 40px;
+    }
+
+    /* Adjusted desktop margins and sticky positioning */
+    .nav-controls { 
+        top: 20px; 
+        margin-bottom: 20px; 
+        padding: 10px 20px; 
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    #page-indicator {
+        font-size: 18px;
+    }
+
+    .program-cover,
+    .program-page {
+        padding: 15px;
+        border-width: 3px;
+    }
+
+    .inner-border {
+        padding: 40px 30px;
+        border-width: 2px;
+    }
+
+    h1 {
+        font-size: 24px;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .subheading {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .hosts {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .logo-placeholder {
+        margin: 30px 0;
+        width: 150px;
+        height: 180px;
+        font-size: 12px;
+    }
+
+    .holy-week-title {
+        font-size: 22px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-width: 2px;
+        width: 80%;
+    }
+
+    .dates-table {
+        width: 80%;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    .dates-table td {
+        padding: 8px 10px;
+    }
+
+    .leadership {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+
+    .leadership p {
+        margin: 4px 0;
+    }
+
+    /* Desktop adjustments for the new layout */
+    .page-title {
+        font-size: 22px;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+
+    .worship-leader {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        margin: 25px 0 10px 0;
+    }
+
+    .worship-row {
+        padding: 10px 0;
+    }
+
+    .worship-action {
+        font-size: 15px;
+    }
+
+    .worship-person {
+        font-size: 15px;
+    }
+
+    .worship-person .sub-text {
+        font-size: 13px;
+    }
+
+    .trial-list {
+        font-size: 15px;
+        padding-left: 25px;
+    }
+
+    .trial-list li {
+        margin-bottom: 10px;
+    }
+
+    .page-number {
+        font-size: 12px;
+        margin-top: 30px;
+    }
+}
