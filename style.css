@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /* --- FULL SCREEN COVER PAGE (PAGE 1) --- */
 .full-screen-page {
     border: none !important;
