@@ -11,7 +11,6 @@
     box-shadow: none !important;
     background-color: transparent !important;
     max-width: 100% !important; /* Removes the 700px limit */
-    height: calc(100vh - 90px); /* Fills the screen height beneath the nav bar */
     display: none; /* Controlled by JS */
     justify-content: center;
     align-items: center;
