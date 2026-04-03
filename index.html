@@ -14,55 +14,16 @@
         <button id="prevBtn" class="nav-btn" onclick="changePage(-1)">&#8592; Prev</button>
         <span id="page-indicator">Page 1 of 6</span>
         <button id="nextBtn" class="nav-btn" onclick="changePage(1)">Next &#8594;</button>
+        <!-- <button class="nav-btn" onclick="window.print()" style="background-color: #d4af37; color: #222; font-weight: bold;">Export PDF</button> -->
+        <a href="https://amehymnal.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-btn" style="margin-left: 10px;">Church Hymnal</a>
     </div>
 
     <div class="program-page full-screen-page active" id="page1">
         <img src="holy-week-cover.png" alt="Holy Week Poster" class="cover-image">
     </div>
 
-    <div class="program-page" id="page2">
-        <div class="inner-border">
-            <h1>The African Methodist Episcopal Church</h1>
-            <p class="subheading">Queenstown Annual Conference</p>
-            <p class="subheading">Queenstown District</p>
-            <p class="hosts">Hosts: GS Magau, St Joseph & Charlotte Maxeke Circuits</p>
-
-            <div class="logo-placeholder">
-                <img src="AMEC Logo.webp" alt="AME Church Logo">
-            </div>
-
-            <div class="holy-week-title">2026 Holy Week</div>
-            <table class="dates-table">
-                <tr>
-                    <td>Palm Sunday:</td>
-                    <td>29 March 2026</td>
-                </tr>
-                <tr>
-                    <td>Holy Week:</td>
-                    <td>30 March - 02 April 2026</td>
-                </tr>
-                <tr>
-                    <td>Good Friday:</td>
-                    <td>03 April 2026</td>
-                </tr>
-                <tr>
-                    <td>Resurrection Sunday:</td>
-                    <td>05 April 2026</td>
-                </tr>
-            </table>
-
-            <div class="leadership">
-                <p><span class="name">Bishop Henry A. Belin III</span> - Presiding Prelate</p>
-                <p><span class="name">Mother Rita Sinkfield Belin, Esq</span> - Episcopal Supervisor</p>
-                <p><span class="name">Reverend Luvuyo P. Mbambani</span> - Presiding Elder</p>
-                <p><span class="name">Reverend Melumzi L. Njili</span> - GS Magau Memorial AME Church Pastor</p>
-                <p><span class="name">Reverend Nomvuzo Ndondo</span> - St. Joseph AME Church Pastor</p>
-                <p><span class="name">Reverend Nozuko G. Makhasi</span> - Charlotte Maxeke Empowerment Temple</p>
-                <p><span class="name">Reverend Ntombomzi V. Rhululu-Tantsi</span></p>
-            </div>
-
-            <div class="page-number">Page | 2</div>
-        </div>
+    <div class="program-page full-screen-page" id="page2">
+        <img src="Page 2.png" alt="Page 2" class="cover-image">
     </div>
 
     <div class="program-page" id="page3">
@@ -559,6 +520,8 @@
             <div class="page-number">Page | 6</div>
         </div>
     </div>
+
+    <div class="page-footer">Designed by Thandolwethu Njili</div>
 
     <script>
         let currentPage = 1;

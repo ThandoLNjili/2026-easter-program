@@ -11,7 +11,6 @@
     box-shadow: none !important;
     background-color: transparent !important;
     max-width: 100% !important; /* Removes the 700px limit */
-    height: calc(100vh - 90px); /* Fills the screen height beneath the nav bar */
     display: none; /* Controlled by JS */
     justify-content: center;
     align-items: center;
@@ -44,7 +43,7 @@ body {
 /* Navigation Controls (Mobile) */
 .nav-controls {
     position: sticky;       /* Makes the bar float */
-    top: 10px;              /* Sets the distance from the top edge */
+    bottom: 10px;              /* Sets the distance from the top edge */
     z-index: 1000;          /* Ensures it stays ON TOP of the text while scrolling */
     
     display: flex;
@@ -126,6 +125,16 @@ body {
 
 .program-page.active {
     display: block;
+}
+
+.page-footer {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin-top: 8px;
+    margin-bottom: 12px;
 }
 
 @keyframes fadeIn {
@@ -465,5 +474,68 @@ h1 {
     .page-number {
         font-size: 12px;
         margin-top: 30px;
+    }
+}
+
+/* --- PDF EXPORT & PRINT STYLES --- */
+@media print {
+    /* 1. Hide the navigation bar so it doesn't appear in the PDF */
+    .nav-controls {
+        display: none !important;
+    }
+
+    /* 2. Reset the background so it prints cleanly */
+    body {
+        background-color: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Force ALL pages to be visible and restore the RED border */
+    .program-page {
+        display: block !important; 
+        max-width: 100% !important; 
+        
+        /* RESTORED RED BORDER */
+        border: 2px solid #800000 !important; 
+        
+        box-shadow: none !important; 
+        /* Adds a tiny margin so the printer doesn't cut off the red border */
+        margin: 5px !important; 
+        padding: 15px !important;
+        
+        /* Force the red box to stretch down the printed page */
+        height: 98vh !important; 
+        box-sizing: border-box !important;
+        
+        /* Force a page break after every program page */
+        break-after: page; 
+        page-break-after: always; 
+    }
+
+    /* 4. Ensure the image pages center correctly on their PDF pages */
+    .full-screen-page {
+        display: flex !important;
+        height: 100vh !important;
+        margin: 0 !important;
+        border: none !important; /* Remove red border from poster pages */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cover-image {
+        max-height: 100vh;
+        width: auto;
+    }
+
+    /* 5. Make the inner gold border stretch nicely inside the red border */
+    .inner-border {
+        border: 2px solid #d4af37 !important;
+        /* Fills the space inside the red border */
+        height: 100% !important; 
+        box-sizing: border-box !important;
+        page-break-inside: avoid;
+        /* Prevents scrollbars from showing up on the printed PDF */
+        overflow: visible !important; 
     }
 }
